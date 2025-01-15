@@ -1,0 +1,130 @@
+In file included from client.h:5,
+                 from udp-client.c:13:
+encryption.c: In function ‘decrypt’:
+encryption.c:18:10: warning: ‘return’ with a value, in function returning void [-Wreturn-type]
+   18 |   return ascon_aead_decrypt(plaintext, tag, ciphertext, ct_len, ad, ad_len, iv, key);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encryption.c:17:6: note: declared here
+   17 | void decrypt(uint8_t *ciphertext, uint64_t ct_len, uint8_t *plaintext, uint8_t *tag) {
+      |      ^~~~~~~
+In file included from client.h:7,
+                 from udp-client.c:13:
+serial.c: In function ‘serial_serve’:
+serial.c:16:35: warning: passing argument 1 of ‘serial_line_input_byte’ makes integer from pointer without a cast [-Wint-conversion]
+   16 |     while (serial_line_input_byte(&input_char) > 0) {
+      |                                   ^~~~~~~~~~~
+      |                                   |
+      |                                   unsigned char *
+In file included from serial.c:2,
+                 from client.h:7,
+                 from udp-client.c:13:
+../../os/dev/serial-line.h:70:42: note: expected ‘unsigned char’ but argument is of type ‘unsigned char *’
+   70 | int serial_line_input_byte(unsigned char c);
+      |                            ~~~~~~~~~~~~~~^
+In file included from udp-client.c:13:
+client.h: In function ‘udp_rx_callback’:
+client.h:18:35: warning: unused parameter ‘c’ [-Wunused-parameter]
+   18 |     struct simple_udp_connection *c,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+client.h:20:14: warning: unused parameter ‘sender_port’ [-Wunused-parameter]
+   20 |     uint16_t sender_port,
+      |     ~~~~~~~~~^~~~~~~~~~~
+client.h:21:25: warning: unused parameter ‘receiver_addr’ [-Wunused-parameter]
+   21 |     const uip_ipaddr_t *receiver_addr,
+      |     ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+client.h:22:14: warning: unused parameter ‘receiver_port’ [-Wunused-parameter]
+   22 |     uint16_t receiver_port,
+      |     ~~~~~~~~~^~~~~~~~~~~~~
+In file included from udp-client.c:14:
+mote.h: At top level:
+mote.h:1:19: warning: extra tokens at end of #ifdef directive
+    1 | #ifdef _CLIENT_H_ || _SERVER_H_
+      |                   ^~
+udp-client.c: In function ‘process_thread_udp_client_process’:
+udp-client.c:62:17: warning: pointer targets in passing argument 1 of ‘encrypt’ differ in signedness [-Wpointer-sign]
+   62 |         encrypt(str,strlen(str),key);
+      |                 ^~~
+      |                 |
+      |                 char *
+In file included from client.h:5,
+                 from udp-client.c:13:
+encryption.c:13:23: note: expected ‘uint8_t *’ {aka ‘unsigned char *’} but argument is of type ‘char *’
+   13 | void encrypt(uint8_t *plaintext, uint64_t pt_len, uint8_t *ciphertext, uint8_t *tag) {
+      |              ~~~~~~~~~^~~~~~~~~
+udp-client.c:62:9: error: too few arguments to function ‘encrypt’
+   62 |         encrypt(str,strlen(str),key);
+      |         ^~~~~~~
+In file included from client.h:5,
+                 from udp-client.c:13:
+encryption.c:13:6: note: declared here
+   13 | void encrypt(uint8_t *plaintext, uint64_t pt_len, uint8_t *ciphertext, uint8_t *tag) {
+      |      ^~~~~~~
+In file included from ../../os/sys/lc.h:124,
+                 from ../../os/sys/pt.h:217,
+                 from ../../os/sys/process.h:58,
+                 from ../../os/contiki.h:40,
+                 from ../../os/net/linkaddr.h:56,
+                 from ../../os/sys/log.h:55,
+                 from client.h:1,
+                 from udp-client.c:13:
+mote.h: In function ‘process_thread_serial_read_process’:
+../../os/sys/lc-switch.h:69:21: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   69 | #define LC_SET(s) s = __LINE__; case __LINE__:
+../../os/sys/pt.h:478:5: note: in expansion of macro ‘LC_SET’
+  478 |     LC_SET((pt)->lc);                           \
+      |     ^~~~~~
+../../os/sys/process.h:179:37: note: in expansion of macro ‘PT_YIELD_UNTIL’
+  179 | #define PROCESS_YIELD_UNTIL(c)      PT_YIELD_UNTIL(process_pt, c)
+      |                                     ^~~~~~~~~~~~~~
+../../os/sys/process.h:158:37: note: in expansion of macro ‘PROCESS_YIELD_UNTIL’
+  158 | #define PROCESS_WAIT_EVENT_UNTIL(c) PROCESS_YIELD_UNTIL(c)
+      |                                     ^~~~~~~~~~~~~~~~~~~
+mote.h:11:5: note: in expansion of macro ‘PROCESS_WAIT_EVENT_UNTIL’
+   11 |     PROCESS_WAIT_EVENT_UNTIL(ev == serial_line_event_message);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+../../os/sys/lc-switch.h:69:33: note: here
+   69 | #define LC_SET(s) s = __LINE__; case __LINE__:
+      |                                 ^~~~
+../../os/sys/pt.h:478:5: note: in expansion of macro ‘LC_SET’
+  478 |     LC_SET((pt)->lc);                           \
+      |     ^~~~~~
+../../os/sys/process.h:179:37: note: in expansion of macro ‘PT_YIELD_UNTIL’
+  179 | #define PROCESS_YIELD_UNTIL(c)      PT_YIELD_UNTIL(process_pt, c)
+      |                                     ^~~~~~~~~~~~~~
+../../os/sys/process.h:158:37: note: in expansion of macro ‘PROCESS_YIELD_UNTIL’
+  158 | #define PROCESS_WAIT_EVENT_UNTIL(c) PROCESS_YIELD_UNTIL(c)
+      |                                     ^~~~~~~~~~~~~~~~~~~
+mote.h:11:5: note: in expansion of macro ‘PROCESS_WAIT_EVENT_UNTIL’
+   11 |     PROCESS_WAIT_EVENT_UNTIL(ev == serial_line_event_message);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+udp-client.c: In function ‘process_thread_udp_client_process’:
+../../os/sys/lc-switch.h:69:21: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   69 | #define LC_SET(s) s = __LINE__; case __LINE__:
+../../os/sys/pt.h:458:5: note: in expansion of macro ‘LC_SET’
+  458 |     LC_SET((pt)->lc);                           \
+      |     ^~~~~~
+../../os/sys/process.h:165:37: note: in expansion of macro ‘PT_YIELD’
+  165 | #define PROCESS_YIELD()             PT_YIELD(process_pt)
+      |                                     ^~~~~~~~
+../../os/sys/process.h:142:37: note: in expansion of macro ‘PROCESS_YIELD’
+  142 | #define PROCESS_WAIT_EVENT()        PROCESS_YIELD()
+      |                                     ^~~~~~~~~~~~~
+udp-client.c:40:5: note: in expansion of macro ‘PROCESS_WAIT_EVENT’
+   40 |     PROCESS_WAIT_EVENT();
+      |     ^~~~~~~~~~~~~~~~~~
+../../os/sys/lc-switch.h:69:33: note: here
+   69 | #define LC_SET(s) s = __LINE__; case __LINE__:
+      |                                 ^~~~
+../../os/sys/pt.h:458:5: note: in expansion of macro ‘LC_SET’
+  458 |     LC_SET((pt)->lc);                           \
+      |     ^~~~~~
+../../os/sys/process.h:165:37: note: in expansion of macro ‘PT_YIELD’
+  165 | #define PROCESS_YIELD()             PT_YIELD(process_pt)
+      |                                     ^~~~~~~~
+../../os/sys/process.h:142:37: note: in expansion of macro ‘PROCESS_YIELD’
+  142 | #define PROCESS_WAIT_EVENT()        PROCESS_YIELD()
+      |                                     ^~~~~~~~~~~~~
+udp-client.c:40:5: note: in expansion of macro ‘PROCESS_WAIT_EVENT’
+   40 |     PROCESS_WAIT_EVENT();
+      |     ^~~~~~~~~~~~~~~~~~
+make: *** [../../Makefile.include:569: build/cooja/obj/udp-client.o] Error 1

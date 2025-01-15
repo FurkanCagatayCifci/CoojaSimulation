@@ -1,5 +1,6 @@
 #ifndef PROJECT_CONF_H_
 #define PROJECT_CONF_H_
+#endif
 // Enable energy stats collection
 #define ENERGEST_CONF_ON 1
 #define SERIAL_LINE_CONF_ENABLED 1
@@ -17,6 +18,8 @@
 
 #define V_CPU 3.3  // Assume typical CPU voltage (e.g., 3.3V)
 #define I_CPU 0.005 // Assume typical CPU current (e.g., 5mA)
+#ifndef ASCON_CONF
 
+#define ASCON_CONF
 
 #endif /* PROJECT_CONF_H_ */
