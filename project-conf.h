@@ -12,7 +12,7 @@
 #define SHUNT_RESISTOR_VALUE 0.1 // Example: 0.1 ohms shunt resistor for current sensing
 #define V_TX 3.3  // Assume typical TX voltage (e.g., 3.3V)
 #define I_TX 0.03 // Assume typical TX current (e.g., 30mA)
-
+#undef ENCRPTION_ON
 #define V_RX 3.3  // Assume typical RX voltage (e.g., 3.3V)
 #define I_RX 0.015 // Assume typical RX current (e.g., 15mA)
 

@@ -1,33 +1,12 @@
-#ifdef _CLIENT_H_ || _SERVER_H_
-PROCESS_THREAD(serial_read_process, ev, data)
-{
-  PROCESS_BEGIN();
+#ifndef _MOTE_H_
+#define _MOTE_H_
 
-  LOG_INFO("Serial read process started.\n");
+#include "contiki.h"
+#include "sys/log.h"
+#include "filelogging.h"
+#include "dev/serial-line.h"
 
-  // Wait for a serial line event
-  while (1)
-  {
-    PROCESS_WAIT_EVENT_UNTIL(ev == serial_line_event_message);
+// Process declaration
+PROCESS(serial_read_process,"Serial read process");
 
-    if (data != NULL)
-    {
-      // Process the received serial message
-      char *received_string = (char *)data;
-      LOG_INFO("Received string: %s\n", received_string);
-      // Handle the command "read_log"
-      if (strcmp(received_string, "read_log") == 0)
-      {
-        // Call your log-reading function here
-        read_log_file();
-      }
-      else
-      {
-        LOG_INFO("Unknown command: %s\n", received_string);
-      }
-    }
-  }
-
-  PROCESS_END();
-}
-#endif
+#endif /* _MOTE_H_ */

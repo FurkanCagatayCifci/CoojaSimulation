@@ -1,4 +1,5 @@
 #define _CLIENT_H_
+#include "project-conf.h"
 #include "sys/log.h"
 #include "sys/energest.h"
 #include <stdint.h>
@@ -10,7 +11,6 @@
 #include "random.h"
 #include "net/netstack.h"
 #include "net/ipv6/simple-udp.h"
-#include "mote.h"
 static struct simple_udp_connection udp_conn;
 static uint32_t rx_count = 0;
 
